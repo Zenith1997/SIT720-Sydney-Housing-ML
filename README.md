@@ -1,22 +1,43 @@
-# Sydney Housing Price Prediction and Decision Support
+# Sydney Housing Price Prediction
 
-By Zenith Anthony Dabarera. SIT720 Machine Learning coursework.
+Compare regression models and turn a saved prediction pipeline into a decision-support workflow.
 
-Sydney housing price prediction and a Gradio decision-support app.
+**Python · pandas · scikit-learn · Random Forest · Gradio**
 
-## Files
+## Project at a glance
+
+Random Forest was selected using training cross-validation MAE (A$471,511). Its held-out MAE was A$509,178 and R² was 0.803. Other candidates performed differently on the held-out metrics; these numbers do not establish universal superiority.
+
+## Technical work
+
+- Feature engineering and preprocessing pipelines
+- Ridge, Gradient Boosting and Random Forest comparison
+- Cross-validation-based model selection
+- Residual and error analysis; saved-pipeline and Gradio workflow
+
+## Explore the evidence
 
 - [SIT720_8_1D_Zenith_Anthony_feedback_fixed.ipynb](SIT720_8_1D_Zenith_Anthony_feedback_fixed.ipynb)
 - [SIT720_8_1D_Report_Zenith_Anthony_feedback_fixed.pdf](SIT720_8_1D_Report_Zenith_Anthony_feedback_fixed.pdf)
 
-## Execution status
+## Run locally
 
-15 of 15 code cells have stored execution counts. Original notebook outputs are preserved; this publication did not rerun experiments. See the notebook and report for results and limitations.
+```bash
+python -m venv .venv
+# Activate the environment, then:
+python -m pip install jupyter numpy pandas matplotlib scikit-learn joblib
+jupyter notebook
+```
 
-## Running
+Use the notebook's DATA setting. The source workflow expects sydney_housing_sold_105.csv and additional comparison CSVs; these support files are not currently bundled in this repository.
 
-Open the notebook in Jupyter or Google Colab and follow its dataset-loading instructions. Install the packages imported in the notebook. Input datasets may require separate download.
+Open the linked notebook and run the cells in order. Package names reflect the source imports; a fresh environment was not tested during this documentation update. Dataset downloads require internet access.
 
-## Scope
+## Limitations and status
 
-Educational experiments; no production or clinical validation is claimed. The uploaded notebooks and reports determine the actual project scope, which may differ from older assessment briefs.
+105 sold-property records across Bondi Beach, Parramatta and Blacktown; small sample, limited geographic coverage and high absolute prediction error.
+
+The repository preserves saved notebook outputs. Results are from those outputs, not a new execution.
+
+**Author:** Zenith Anthony Dabarera · SIT720 Machine Learning  
+[AI/ML portfolio](https://github.com/Zenith1997)

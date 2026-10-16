@@ -1,43 +1,38 @@
-# Sydney Housing Price Prediction
+# Sydney Housing Price Estimation
 
-Compare regression models and turn a saved prediction pipeline into a decision-support workflow.
+A small-data machine-learning study with a reusable Python pipeline and Gradio interface.
 
-**Python · pandas · scikit-learn · Random Forest · Gradio**
+**Python | scikit-learn | pandas | Random Forest | Gradient Boosting | Gradio**
 
-## Project at a glance
+## What I learned
 
-Random Forest was selected using training cross-validation MAE (A$471,511). Its held-out MAE was A$509,178 and R² was 0.803. Other candidates performed differently on the held-out metrics; these numbers do not establish universal superiority.
+This project compares three regression approaches on 105 manually collected sales from Bondi Beach, Parramatta and Blacktown. The more interesting challenge was understanding why unusual, expensive houses were difficult to estimate from basic tabular features.
 
-## Technical work
+The original saved notebook reports a **Random Forest**, selected by training cross-validation, with test **MAE A$509,178** and **R² 0.803** on 21 held-out properties. These are historical notebook results, not results independently re-run for this GitHub upgrade.
 
-- Feature engineering and preprocessing pipelines
-- Ridge, Gradient Boosting and Random Forest comparison
-- Cross-validation-based model selection
-- Residual and error analysis; saved-pipeline and Gradio workflow
+## Browse the code
 
-## Explore the evidence
+- [Original executed notebook](SIT720_8_1D_Zenith_Anthony_feedback_fixed.ipynb) and [project report](SIT720_8_1D_Report_Zenith_Anthony_feedback_fixed.pdf)
+- [Training script](src/housing_ml/train.py), [feature preparation](src/housing_ml/features.py), and [prediction code](src/housing_ml/modeling.py)
+- [Gradio user interface](app.py) for a single property or a batch CSV
+- [Example input](data/example_input.csv), [data provenance](data/README.md) and [historical results](results/README.md)
+- [Automated tests](tests/) and [GitHub Actions workflow](.github/workflows/tests.yml)
 
-- [SIT720_8_1D_Zenith_Anthony_feedback_fixed.ipynb](SIT720_8_1D_Zenith_Anthony_feedback_fixed.ipynb)
-- [SIT720_8_1D_Report_Zenith_Anthony_feedback_fixed.pdf](SIT720_8_1D_Report_Zenith_Anthony_feedback_fixed.pdf)
+## Run it
 
-## Run locally
+Python 3.10+ is recommended.
 
 ```bash
 python -m venv .venv
-# Activate the environment, then:
-python -m pip install jupyter numpy pandas matplotlib scikit-learn joblib
-jupyter notebook
+python -m pip install -r requirements.txt
+python -m housing_ml.train --data data/sydney_housing_sold_105.csv
+python app.py
 ```
 
-Use the notebook's DATA setting. The source workflow expects sydney_housing_sold_105.csv and additional comparison CSVs; these support files are not currently bundled in this repository.
+**Data limitation:** The original source CSV is not included publicly. Training needs the owner's original 105-property CSV and permission to use it. Without that CSV, the new training command and app cannot make real predictions. See [data instructions](data/README.md). The sample input is illustrative, not measured sales.
 
-Open the linked notebook and run the cells in order. Package names reflect the source imports; a fresh environment was not tested during this documentation update. Dataset downloads require internet access.
+Run tests with `python -m pip install -r requirements-dev.txt` and `python -m pytest -q`.
 
-## Limitations and status
+This is an educational decision-support model, **not a property valuation service**. The input omits property condition, views, precise street position and other major price drivers. The original dataset is small and not representative of all Sydney property sales.
 
-105 sold-property records across Bondi Beach, Parramatta and Blacktown; small sample, limited geographic coverage and high absolute prediction error.
-
-The repository preserves saved notebook outputs. Results are from those outputs, not a new execution.
-
-**Author:** Zenith Anthony Dabarera · SIT720 Machine Learning  
-[AI/ML portfolio](https://github.com/Zenith1997)
+**Preserved source:** The submitted notebook and report remain unchanged.

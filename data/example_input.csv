@@ -1,0 +1,4 @@
+suburb,property_type,bedrooms,bathrooms,parking,land_size_m2,sale_date
+Parramatta,House,3,2,1,350,2025-01-15
+Blacktown,House,4,2,2,480,2025-01-15
+Bondi Beach,Apartment,2,1,,,2025-01-15

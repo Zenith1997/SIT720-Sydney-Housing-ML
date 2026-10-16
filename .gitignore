@@ -1,4 +1,4 @@
-# Credentials and machine-specific files
+# Preserve the existing repository exclusions and document generated outputs.
 .env
 .env.*
 !.env.example
@@ -6,16 +6,19 @@
 *.key
 __pycache__/
 .ipynb_checkpoints/
+.pytest_cache/
 .venv/
 venv/
 .DS_Store
 Thumbs.db
-# Avoid accidental publication of raw personal/clinical/large datasets
 *.csv
+!data/example_input.csv
 *.xlsx
 *.parquet
 *.db
 *.sqlite
 *.sqlite3
-# Check licensing and contents before committing input data.
-# Prefer a documented dataset download link and toy samples.
+*.joblib
+results/*.json
+figures/
+# Obtain the original 105-sale dataset separately; do not commit it.
